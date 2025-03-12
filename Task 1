@@ -1,0 +1,49 @@
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
+
+def celsius_to_kelvin(celsius):
+    return celsius + 273.15
+
+def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5/9
+
+def fahrenheit_to_kelvin(fahrenheit):
+    return (fahrenheit - 32) * 5/9 + 273.15
+
+def kelvin_to_celsius(kelvin):
+    return kelvin - 273.15
+
+def kelvin_to_fahrenheit(kelvin):
+    return (kelvin - 273.15) * 9/5 + 32
+
+def convert_temperature(value, from_scale, to_scale):
+    if from_scale == 'Celsius':
+        if to_scale == 'Fahrenheit':
+            return celsius_to_fahrenheit(value)
+        elif to_scale == 'Kelvin':
+            return celsius_to_kelvin(value)
+        else:
+            return value  # Celsius to Celsius
+    elif from_scale == 'Fahrenheit':
+        if to_scale == 'Celsius':
+            return fahrenheit_to_celsius(value)
+        elif to_scale == 'Kelvin':
+            return fahrenheit_to_kelvin(value)
+        else:
+            return value  # Fahrenheit to Fahrenheit
+    elif from_scale == 'Kelvin':
+        if to_scale == 'Celsius':
+            return kelvin_to_celsius(value)
+        elif to_scale == 'Fahrenheit':
+            return kelvin_to_fahrenheit(value)
+        else:
+            return value  # Kelvin to Kelvin
+    else:
+        return "Invalid scale"
+
+value = float(input("Enter the temperature value: "))
+from_scale = input("Enter the current scale (Celsius, Fahrenheit, Kelvin): ").capitalize()
+to_scale = input("Enter the scale to convert to (Celsius, Fahrenheit, Kelvin): ").capitalize()
+
+converted_value = convert_temperature(value, from_scale, to_scale)
+print(f"{value} {from_scale} is equal to {converted_value} {to_scale}.")
